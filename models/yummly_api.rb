@@ -9,8 +9,3 @@ end
 # this searches Yummly for a recipe and returns an array of recipe objects
 # this should go into a method within your new model/class
 results = Yummly.search('type of recipe you want') #=> an array of recipe results
-
-puts "Are you making breakfast, lunch, or dinner?"
-type = gets.chomp
-
-def recipe(type)
