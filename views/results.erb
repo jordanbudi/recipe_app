@@ -1,0 +1,61 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title> Results </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="recipe_app/public/css/style.css" type="text/css">
+</head>
+<body>
+
+  <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">
+          <%=@reciperesults_array[0]%>
+        </a>
+
+      </div>
+  </nav>
+
+
+<div class="container">
+
+<br>
+<br>
+  <div class = "row col s12 center">
+    <img src="<%=@recipe_image_url%>">
+  </div>
+
+  <div class = "row">
+
+    <div class = "col s6">
+      <%=@reciperesults_array[2]%>
+      <br><br>
+      <p><%=@recipe_servings%></p>
+      <br><br>
+      <p><%=@recipe_calories%> calories</p>
+      <br><br>
+      <p>Rating: <%=@recipe_rating%> /5</p>
+      <br><br>
+      <a href= "<%=@recipe_url%>"> Go to recipe!</a>
+    </div>
+
+    <div class = "col s6">
+      <% @recipe_ingredient_list.each do |x| %>
+      <ul>
+        <li><%=x%></li>
+
+      </ul>
+      <%end%>
+
+    </div>
+
+
+  </div>
+
+<!-- <a href= "<%=@api_link%>"> Api link!</a> -->
+
+
+<a onClick="history.go(0)" class="waves-effect waves-light btn"><i class="material-icons right">loop</i>Refresh</a>
+  </div>
+</body>
