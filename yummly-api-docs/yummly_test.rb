@@ -12,13 +12,13 @@ class Search
   end
 
   def search(recipe)
-    @results = Yummly.search(recipe) # this returns an array of recipe results
+    @results = Yummly.search(recipe).matches.sample # this returns an array of recipe results
   end
 
   def display_results
-    first_recipe_name = @results.first.name
-    first_recipe_ingredients = @results.first.ingredients # this returns an array of recipe ingredients
-    first_recipe_id = @results.first.id
+    first_recipe_name = @results["recipeName"]
+    first_recipe_ingredients = @results["ingredients"] # this returns an array of recipe ingredients
+    first_recipe_id = @results["id"]
 
     puts "--------------------------------"
     puts "Recipe name: #{first_recipe_name}"
@@ -29,5 +29,5 @@ class Search
 end
 
 searcher = Search.new
-searcher.search('chocolate chip cookies')
+searcher.search('Pizza')
 searcher.display_results
