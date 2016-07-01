@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
   <title><%=@title%></title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <link href="css/style.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
 </head>
 
 <body>
   <div class="container">
+    <div id="homepage_title">
     <h1>Recipe Generator</h1>
+  </div>
+  <div id="homepage_para">
     <p> Need recipe ideas? We got you covered!</p>
-
-<div class="row">
-<form class="col s12" method="post" action="/reciperesults">
-
-
-  <div class="row">
-    <div class="input-field col s12">
-      <input id="food_type" type="text" class="validate" name="food_type">
-      <label for="food_type">Food Type</label>
-    </div>
   </div>
 
-  <div class="row">
-    <div class="input-field col s6">
-      <label for="included_ingredients">Available ingredients (separate by commas)</label>
-      <input id="included_ingredients" type="text" class="validate" name="included_ingredients">
-    </div>
+  <div class="middle-form-thingee">
+    <div class="center-align row">
+      <form class="col s8 offset-s2" method="post" action="/reciperesults">
 
-    <div class="input-field col s6">
-      <label for="excluded_ingredients">Unavailable ingredients (separate by commas)</label>
-      <input id="last_name" type="text" class="validate" name="excluded_ingredients">
+
+        <div class="row">
+          <div class="input-field col s8 offset-s2">
+            <input id="food_type" type="text" class="validate" name="food_type">
+            <label for="food_type">Food Type</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s8 offset-s2">
+            <label for="included_ingredients">Available Ingredients (separate by commas)</label>
+            <input id="included_ingredients" type="text" class="validate" name="included_ingredients">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s8 offset-s2">
+            <label for="excluded_ingredients">Exclude Ingredients (separate by commas)</label>
+            <input id="excluded_ingredients" type="text" class="validate" name="excluded_ingredients">
+          </div>
+        </div>
+
+
+        <input type="submit">
+      </form>
     </div>
   </div>
-
-
-  <input type="submit">
-</form>
-</div>
 
 </div>
   </body>
