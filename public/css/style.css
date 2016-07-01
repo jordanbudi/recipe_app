@@ -16,6 +16,11 @@ body {
   width: 100%;
 }
 
+#home-logo {
+  color: black;
+  font-family: 'Bungee', cursive;
+}
+
 #homepage_para p {
   text-align: center;
   margin-left: 27%;
