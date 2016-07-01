@@ -17,7 +17,10 @@ def recipe_search(food_type, included_ingredients, excluded_ingredients)
   end
 
   if excluded_ingredients.length > 1
-    @sample_request = @sample_request + "&excludedIngredient[]=#{excluded_ingredients}"
+    array_of_excluded_ingredients = excluded_ingredients.gsub(", " , ",").split(",")
+    array_of_excluded_ingredients.each do |excluded_ingredients|
+      @sample_request = @sample_request + "&excludedIngredient[]=#{excluded_ingredients}"
+    end
   end
 
   get_result(@sample_request)
@@ -29,7 +32,7 @@ def get_result(req)
   sample_parsedResponse = JSON.parse(sample_response)
 
   results_array = []
-  
+
   samples_value = sample_parsedResponse["matches"].sample
   results_array.push(samples_value["recipeName"])
   results_array.push(samples_value["ingredients"])
