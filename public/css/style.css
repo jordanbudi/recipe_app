@@ -13,11 +13,19 @@ body {
 
 #homepage_para {
   float: right;
+  width: 100%;
+}
+
+#homepage_para p {
+  text-align: center;
+  margin-left: 27%;
 }
 
 /* label color */
    .input-field label {
      color: #fff;
+     font-size: 1.2em;
+     white-space: nowrap;
    }
    /* label focus color */
    .input-field input[type=text]:focus + label {
