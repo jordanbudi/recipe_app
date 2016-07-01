@@ -34,11 +34,15 @@ def get_result(req)
   results_array = []
 
   samples_value = sample_parsedResponse["matches"].sample
+  results_array.push(samples_value["id"])
   results_array.push(samples_value["recipeName"])
   results_array.push(samples_value["ingredients"])
   results_array.push(((samples_value["totalTimeInSeconds"].to_i)/60).to_s+" minutes")
-  results_array.push(samples_value["imageUrlsBySize"]["360"])
-  results_array.push(samples_value["id"])
+  if  samples_value.key?("imageUrlsBySize")
+    results_array.push(samples_value["imageUrlsBySize"]["90"])
+  else
+    results_array.push("https://www2.tulane.edu/liberal-arts/anthropology/images/not_available_big.jpg")
+  end
   return results_array
 end
 
@@ -47,12 +51,16 @@ def new_recipe_api_call(recipe_id)
   sample_uri = URI(@api_link)
   sample_response = Net::HTTP.get(sample_uri)
   sample_parsedResponse = JSON.parse(sample_response)
-  @recipe_image_url = sample_parsedResponse["images"][0]["hostedLargeUrl"]
+  if sample_parsedResponse["images"][0].key?("hostedLargeUrl")
+    @recipe_image_url = sample_parsedResponse["images"][0]["hostedLargeUrl"]
+  else
+    @recipe_image_url = "images/photo_na.jpg"
+  end
   @recipe_url = sample_parsedResponse["source"]["sourceRecipeUrl"]
   @recipe_ingredient_list = sample_parsedResponse["ingredientLines"]
   @recipe_servings = sample_parsedResponse["yield"]
   @recipe_rating = sample_parsedResponse["rating"]
-  if sample_parsedResponse["nutritionEstimates"][0]["value"] == nil
+  if sample_parsedResponse["nutritionEstimates"].length == 0
     @recipe_calories = "calorie count unavailable"
   else
     @recipe_calories = sample_parsedResponse["nutritionEstimates"][0]["value"]
